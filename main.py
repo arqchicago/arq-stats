@@ -12,5 +12,11 @@ if __name__ == "__main__":
     arq_data = arqstats(heart_df)
     arq_data_print = arq_data.get_data()
     print(arq_data_print)
+    
+    mean_age = arq_data.calc_mean(['age'])
+    print(mean_age)
+    
+    mean_age = arq_data.calc_mean(['age', 'cp'])
+    print(f'Variables [age, cp] mean = {mean_age}')
 
 
