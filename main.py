@@ -18,5 +18,6 @@ if __name__ == "__main__":
     
     mean_age = arq_data.calc_mean(['age', 'cp'])
     print(f'Variables [age, cp] mean = {mean_age}')
-
-
+    
+    median_age = arq_data.calc_median(['age', 'cp'])
+    print(f'Variables [age, cp] median = {median_age}')
