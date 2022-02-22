@@ -45,3 +45,24 @@ class arqstats:
         median = np.median(self.data_np[:,var_name_idx_list], axis=0)  # axis=0 for columns, axis=1 for rows
 
         return median
+
+
+    def calc_mode(self, var_name, return_counts=False):
+        # calculates mode
+        # input [list]:    var_name is a list of the names of variable for which the mode is calculated
+        # input [return_counts]:    if True, returns counts of the mode
+        # output [np array]:   mode value of var_name variable      
+
+        var_name_idx_list = []
+
+        for var in var_name:
+            var_name_idx_list.append(self.column_names.index(var))
+
+        #mode = np.mode(self.data_np[:,var_name_idx_list], axis=0)  # axis=0 for columns, axis=1 for rows
+        mode = stats.mode(self.data_np[:,var_name_idx_list])[0][0]
+        counts = stats.mode(self.data_np[:,var_name_idx_list])[1][0]
+
+        if return_counts:
+            return mode, counts
+        else:
+            return mode

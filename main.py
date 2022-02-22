@@ -21,3 +21,6 @@ if __name__ == "__main__":
     
     median_age = arq_data.calc_median(['age', 'cp'])
     print(f'Variables [age, cp] median = {median_age}')
+
+    mode_age = arq_data.calc_mode(['age', 'cp'])
+    print(f'Variables [age, cp] mode = {mode_age}')
