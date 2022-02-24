@@ -16,11 +16,14 @@ if __name__ == "__main__":
     mean_age = arq_data.calc_mean(['age'])
     print(mean_age)
     
-    mean_age = arq_data.calc_mean(['age', 'cp'])
-    print(f'Variables [age, cp] mean = {mean_age}')
+    mean_age_cp = arq_data.calc_mean(['age', 'cp'])
+    print(f'Variables [age, cp] mean = {mean_age_cp}')
     
-    median_age = arq_data.calc_median(['age', 'cp'])
-    print(f'Variables [age, cp] median = {median_age}')
+    median_age_cp = arq_data.calc_median(['age', 'cp'])
+    print(f'Variables [age, cp] median = {median_age_cp}')
 
-    mode_age = arq_data.calc_mode(['age', 'cp'])
-    print(f'Variables [age, cp] mode = {mode_age}')
+    mode_age_cp = arq_data.calc_mode(['age', 'cp'])
+    print(f'Variables [age, cp] mode = {mode_age_cp}')
+    
+    var_age_cp = arq_data.calc_var(['age', 'cp'])
+    print(f'Variables [age, cp] variance = {var_age_cp}')
