@@ -30,3 +30,6 @@ if __name__ == "__main__":
     
     stdev_age_cp = arq_data.calc_stdev(['age', 'cp'])
     print(f'Variables [age, cp] standard deviation = {stdev_age_cp}')
+    
+    range_age_cp = arq_data.calc_range(['age', 'cp'])
+    print(f'Variables [age, cp] range = {range_age_cp}')

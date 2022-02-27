@@ -69,7 +69,7 @@ class arqstats:
 
     def calc_var(self, var_name):
         # calculates variance
-        # input [list]:    var_name is a list of the names of variable for which the median is calculated
+        # input [list]:    var_name is a list of the names of variable for which the variance is calculated
         # output [np array]:   variance of var_name variable(s)
 
         var_name_idx_list = []
@@ -83,7 +83,7 @@ class arqstats:
 
     def calc_stdev(self, var_name):
         # calculates standard deviation
-        # input [list]:    var_name is a list of the names of variable for which the median is calculated
+        # input [list]:    var_name is a list of the names of variable for which the standard deviation is calculated
         # output [np array]:   standard deviation of var_name variable(s)
 
         #var_name_idx_list = []
@@ -95,3 +95,16 @@ class arqstats:
         stdev = np.sqrt(self.calc_var(var_name))
         
         return stdev
+
+    def calc_range(self, var_name):
+        # calculates range
+        # input [list]:    var_name is a list of the names of variable for which the range is calculated
+        # output [np array]:   standard deviation of var_name variable(s)
+
+        var_name_idx_list = []
+
+        for var in var_name:
+            var_name_idx_list.append(self.column_names.index(var))
+        range_ = np.max(self.data_np[:,var_name_idx_list], axis=0) - np.min(self.data_np[:,var_name_idx_list], axis=0) # axis=0 for columns, axis=1 for rows
+                
+        return range_
