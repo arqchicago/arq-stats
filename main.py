@@ -27,3 +27,6 @@ if __name__ == "__main__":
     
     var_age_cp = arq_data.calc_var(['age', 'cp'])
     print(f'Variables [age, cp] variance = {var_age_cp}')
+    
+    stdev_age_cp = arq_data.calc_stdev(['age', 'cp'])
+    print(f'Variables [age, cp] standard deviation = {stdev_age_cp}')
