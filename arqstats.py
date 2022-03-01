@@ -4,7 +4,7 @@ import scipy
 from scipy import stats
 
 
-# this class implements breadth first search algorithm
+# this class implements statistical calculations
 class arqstats:
 
     # constructor
@@ -108,3 +108,17 @@ class arqstats:
         range_ = np.max(self.data_np[:,var_name_idx_list], axis=0) - np.min(self.data_np[:,var_name_idx_list], axis=0) # axis=0 for columns, axis=1 for rows
                 
         return range_
+
+    def calc_percentile(self, var_name, perc_):
+        # calculates percentile
+        # input [list]:    var_name is a list of the names of variable for which the range is calculated
+        # percentile:      perc_ is the percentile that is calculated
+        # output [np array]:   standard deviation of var_name variable(s)
+
+        var_name_idx_list = []
+
+        for var in var_name:
+            var_name_idx_list.append(self.column_names.index(var))
+        percentiles_ = np.percentile(self.data_np[:,var_name_idx_list], perc_, axis=0)
+                
+        return percentiles_
