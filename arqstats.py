@@ -113,7 +113,7 @@ class arqstats:
         # calculates percentile
         # input [list]:    var_name is a list of the names of variable for which the range is calculated
         # percentile:      perc_ is the percentile that is calculated
-        # output [np array]:   standard deviation of var_name variable(s)
+        # output [np array]:   percentile of var_name variable(s)
 
         var_name_idx_list = []
 
@@ -122,3 +122,23 @@ class arqstats:
         percentiles_ = np.percentile(self.data_np[:,var_name_idx_list], perc_, axis=0)
                 
         return percentiles_
+
+    def calc_percentiles(self, var_name, perc_list_):
+        # calculates percentiles
+        # input [list]:    var_name is a list of the names of variable for which the range is calculated
+        # percentile_list: perc_list_ is a list of percentiles that is calculated
+        # output [np array]:   percentile of var_name variable(s)
+
+        var_name_idx_list = []
+
+        for var in var_name:
+            var_name_idx_list.append(self.column_names.index(var))
+        
+        percentiles_np = []
+        for perc_ in perc_list_:
+            percentiles_ = np.percentile(self.data_np[:,var_name_idx_list], perc_, axis=0)
+            percentiles_np.append(percentiles_)
+        
+        percentiles_np = np.array(percentiles_np)
+                
+        return percentiles_np

@@ -36,3 +36,6 @@ if __name__ == "__main__":
     
     percentile_age_cp = arq_data.calc_percentile(['age', 'cp'], 75)
     print(f'Variables [age, cp] percentile = {percentile_age_cp}')
+    
+    percentiles_age_cp = arq_data.calc_percentiles(['age', 'cp'], [50, 75])
+    print(f'Variables [age, cp] percentiles = \n{percentiles_age_cp}')
