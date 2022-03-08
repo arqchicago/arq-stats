@@ -1,6 +1,8 @@
 import csv
 import pandas as pd
 from arqstats import arqstats
+import continuous_distributions
+import time
 
 if __name__ == "__main__":
 
@@ -39,3 +41,13 @@ if __name__ == "__main__":
     
     percentiles_age_cp = arq_data.calc_percentiles(['age', 'cp'], [50, 75])
     print(f'Variables [age, cp] percentiles = \n{percentiles_age_cp}')
+
+
+
+    # Normal Distribution
+    mean = 0 
+    sd = 1
+    norm_dist = continuous_distributions.normal_dist(mean, sd)
+    print(f'Normal Distribution:   mean={norm_dist.get_mean()},  standard deviation={norm_dist.get_stdev()}')
+
+    
