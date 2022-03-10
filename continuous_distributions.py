@@ -17,5 +17,13 @@ class normal_dist:
 
     def get_stdev(self):
         return self.stdev
+
+    def pdf(self, x):
+        # calculates Probability Distribution Function P(X<x)
+        # input [float x]:    x is the value for which P(X<x) is returned
+        # P(X<x) = 1/sqrt(2*Pi*sd**2) * e^(-1/2 * ((x-mean)/s)**2 )
+        
+        p_x = (1/(2*math.pi*(self.stdev**2))**0.50) * (math.exp(-0.50*((x-self.mean)/self.stdev)**2))
+        return p_x
     
 
