@@ -57,3 +57,5 @@ if __name__ == "__main__":
     print(f'CDF   P(x<1.96) = {norm_dist.cdf(1.96)}')
     print(f'CDF   P(x>0) = {norm_dist.cdfr(0)}')
     print(f'CDF   P(x>1.96) = {norm_dist.cdfr(1.96)}')
+    print(f'CDF   P(0<x<1.96) = {norm_dist.cdfb(0, 1.96)}')
+    print(f'CDF   P(-1.96<x<1.96) = {norm_dist.cdfb(-1.96, 1.96)}')
