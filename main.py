@@ -53,5 +53,7 @@ if __name__ == "__main__":
 
     print(f'PDF   P(x=0) = {norm_dist.pdf(0)}')
     print(f'PDF   P(x=1.96) = {norm_dist.pdf(1.96)}')
-    print(f'CDF   P(x<0) = {norm_dist.cdf(-10,0)}')
-    print(f'CDF   P(x<1.96) = {norm_dist.cdf(-10,1.96)}')
+    print(f'CDF   P(x<0) = {norm_dist.cdf(0)}')
+    print(f'CDF   P(x<1.96) = {norm_dist.cdf(1.96)}')
+    print(f'CDF   P(x>0) = {norm_dist.cdfr(0)}')
+    print(f'CDF   P(x>1.96) = {norm_dist.cdfr(1.96)}')

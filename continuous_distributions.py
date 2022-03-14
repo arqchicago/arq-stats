@@ -26,11 +26,17 @@ class normal_dist:
         p_x = (1/(2*math.pi*(self.stdev**2))**0.50) * (math.exp(-0.50*((x-self.mean)/self.stdev)**2))
         return p_x
     
-    def cdf(self,x1,x2):
+    def cdf(self, x1):
         pdf = lambda x: (1/(2*math.pi*(self.stdev**2))**0.50) * (math.exp(-0.50*((x-self.mean)/self.stdev)**2))
-        p_x_cdf = integrate.quad(pdf, x1, x2)
+        p_x_cdf = integrate.quad(pdf, -20, x1)
         p_x_cdf = round(p_x_cdf[0], 10)
         
         return p_x_cdf
+    
+    def cdfr(self, x1):
+        p_x_cdf = self.cdf(x1)
+        p_x_cdfr = 1 - p_x_cdf
+        
+        return p_x_cdfr
     
 
