@@ -46,4 +46,20 @@ class normal_dist:
         
         return p_x_cdf
     
+    def inv(self, p):
+        # cdf P(X<x) = integral{ 1/sqrt(2*Pi) * e^((-x^2)/2)  }
+        # let u = x/sqrt(2)
+        # then du = 1/sqrt(2) dx
+        # dx = sqrt(2) * du
+        # cdf P(X<x) = integral{ sqrt(2)/sqrt(2*Pi) * e^(-u^2) du  }
+        # cdf P(X<x) = integral{ sqrt(2)*sqrt(2)/(sqrt(2*Pi)*sqrt(2)) * e^(-u^2) du  }
+        # cdf P(X<x) = 1/2 * integral{ 2/sqrt(Pi) * e^(-u^2) du  }
+        # cdf P(X<x) = (1/2) * (2/sqrt(Pi) * integral{ e^(-u^2) du  })
+        # cdf P(X<x) = (1/2) * erf(u)
+        # cdf P(X<x) = (1/2) * erf(x/sqrt(2))
+        # (1/2) * erf(x/sqrt(2)) = p
+        # x = erfinv(2*p) * sqrt(2)
+        
+        return 1
+    
 
