@@ -59,3 +59,8 @@ if __name__ == "__main__":
     print(f'CDF   P(x>1.96) = {norm_dist.cdfr(1.96)}')
     print(f'CDF   P(0<x<1.96) = {norm_dist.cdfb(0, 1.96)}')
     print(f'CDF   P(-1.96<x<1.96) = {norm_dist.cdfb(-1.96, 1.96)}')
+    print(f'CDF   x where P(X<x) = 0.9750,   x = {norm_dist.inv(0.975)}')
+    print(f'CDF   x where P(X<x) = 0.0250,   x = {norm_dist.inv(0.025)}')
+    print(f'CDF   x where P(X>x) = 0.9750,   x = {norm_dist.invr(0.975)}')
+    print(f'CDF   x where P(X>x) = 0.0250,   x = {norm_dist.invr(0.025)}')
+

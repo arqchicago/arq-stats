@@ -1,6 +1,7 @@
 import math
 import scipy.stats
 from scipy import integrate
+from scipy.special import erfinv
 
 # this class implements the Continuous Normal Distribution
 class normal_dist:
@@ -47,19 +48,32 @@ class normal_dist:
         return p_x_cdf
     
     def inv(self, p):
-        # cdf P(X<x) = integral{ 1/sqrt(2*Pi) * e^((-x^2)/2)  }
-        # let u = x/sqrt(2)
-        # then du = 1/sqrt(2) dx
-        # dx = sqrt(2) * du
-        # cdf P(X<x) = integral{ sqrt(2)/sqrt(2*Pi) * e^(-u^2) du  }
-        # cdf P(X<x) = integral{ sqrt(2)*sqrt(2)/(sqrt(2*Pi)*sqrt(2)) * e^(-u^2) du  }
-        # cdf P(X<x) = 1/2 * integral{ 2/sqrt(Pi) * e^(-u^2) du  }
-        # cdf P(X<x) = (1/2) * (2/sqrt(Pi) * integral{ e^(-u^2) du  })
-        # cdf P(X<x) = (1/2) * erf(u)
-        # cdf P(X<x) = (1/2) * erf(x/sqrt(2))
-        # (1/2) * erf(x/sqrt(2)) = p
-        # x = erfinv(2*p) * sqrt(2)
+        # cdf P(Z<z) = integral{ 1/sqrt(2*Pi) * e^((-z^2)/2)  }
+        # let u = z/sqrt(2)
+        # then du = 1/sqrt(2) dz
+        # dz = sqrt(2) * du
+        # cdf P(Z<z) = integral{ sqrt(2)/sqrt(2*Pi) * e^(-u^2) du  }
+        # cdf P(Z<z) = integral{ sqrt(2)*sqrt(2)/(sqrt(2*Pi)*sqrt(2)) * e^(-u^2) du  }
+        # cdf P(Z<z) = 1/2 * integral{ 2/sqrt(Pi) * e^(-u^2) du  }
+        # cdf P(Z<z) = (1/2) * (2/sqrt(Pi) * integral{ e^(-u^2) du  })
+        # cdf P(Z<z) = (1/2) * erf(u)
+        # cdf P(Z<z) = (1/2) * erf(z/sqrt(2))
+        # (1/2) * erf(z/sqrt(2)) = p
+        # erf(z/sqrt(2)) = 2*p
+        # z = erfinv(2*p) * sqrt(2)
+        # p = 1/2*(1 + math.erf(1.96/(2**0.50)))
+        # p = 1/2 + 1/2 * erf(z/sqrt(2))
+        # erf(z/sqrt(2)) = 2p - 1
+        # z = erfinv(2p - 1) * sqrt(2)
+        # x = self.mean + z * self.stdev
         
-        return 1
+        z = erfinv(2*p - 1) * math.sqrt(2)
+        x = self.mean + z * self.stdev
+        return x
+    
+    def invr(self, p_r):
+        p = 1 - p_r
+        x = self.inv(p)
+        return x
     
 
