@@ -77,3 +77,6 @@ class normal_dist:
         return x
     
 
+class std_normal_dist(normal_dist):
+    def __init__(self):
+        super().__init__(mean=0, stdev=1)

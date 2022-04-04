@@ -2,7 +2,7 @@ import csv
 import pandas as pd
 from arqstats import arqstats
 import continuous_distributions
-from continuous_distributions import normal_dist
+from continuous_distributions import normal_dist, std_normal_dist
 import time
 
 if __name__ == "__main__":
@@ -49,7 +49,7 @@ if __name__ == "__main__":
     mean = 0 
     sd = 1
     norm_dist = normal_dist(mean, sd)
-    print(f'Normal Distribution:   mean={norm_dist.get_mean()},  standard deviation={norm_dist.get_stdev()}')
+    print(f'\nNormal Distribution:   mean={norm_dist.get_mean()},  standard deviation={norm_dist.get_stdev()}')
 
     print(f'PDF   P(x=0) = {norm_dist.pdf(0)}')
     print(f'PDF   P(x=1.96) = {norm_dist.pdf(1.96)}')
@@ -64,3 +64,7 @@ if __name__ == "__main__":
     print(f'CDF   x where P(X>x) = 0.9750,   x = {norm_dist.invr(0.975)}')
     print(f'CDF   x where P(X>x) = 0.0250,   x = {norm_dist.invr(0.025)}')
 
+    
+    # Std Normal Distribution
+    std_norm_dist = std_normal_dist()
+    print(f'\nStd Normal Distribution:   mean={std_norm_dist.get_mean()},  standard deviation={std_norm_dist.get_stdev()}')
