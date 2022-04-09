@@ -46,19 +46,19 @@ if __name__ == "__main__":
 
 
     # Normal Distribution
-    mean = 0 
-    sd = 1
+    mean = 20 
+    sd = 2
     norm_dist = normal_dist(mean, sd)
     print(f'\nNormal Distribution:   mean={norm_dist.get_mean()},  standard deviation={norm_dist.get_stdev()}')
 
-    print(f'PDF   P(x=0) = {norm_dist.pdf(0)}')
-    print(f'PDF   P(x=1.96) = {norm_dist.pdf(1.96)}')
-    print(f'CDF   P(x<0) = {norm_dist.cdf(0)}')
-    print(f'CDF   P(x<1.96) = {norm_dist.cdf(1.96)}')
-    print(f'CDF   P(x>0) = {norm_dist.cdfr(0)}')
-    print(f'CDF   P(x>1.96) = {norm_dist.cdfr(1.96)}')
-    print(f'CDF   P(0<x<1.96) = {norm_dist.cdfb(0, 1.96)}')
-    print(f'CDF   P(-1.96<x<1.96) = {norm_dist.cdfb(-1.96, 1.96)}')
+    print(f'PDF   P(x=20) = {norm_dist.pdf(20)}')
+    print(f'PDF   P(x=23.92) = {norm_dist.pdf(23.92)}')
+    print(f'CDF   P(x<20) = {norm_dist.cdf(20)}')
+    print(f'CDF   P(x<23.92) = {norm_dist.cdf(23.92)}')
+    print(f'CDF   P(x>20) = {norm_dist.cdfr(20)}')
+    print(f'CDF   P(x>23.92) = {norm_dist.cdfr(23.92)}')
+    print(f'CDF   P(20<x<23.92) = {norm_dist.cdfb(20, 23.92)}')
+    print(f'CDF   P(16.08<x<23.92) = {norm_dist.cdfb(16.08, 23.92)}')
     print(f'CDF   x where P(X<x) = 0.9750,   x = {norm_dist.inv(0.975)}')
     print(f'CDF   x where P(X<x) = 0.0250,   x = {norm_dist.inv(0.025)}')
     print(f'CDF   x where P(X>x) = 0.9750,   x = {norm_dist.invr(0.975)}')
@@ -68,3 +68,16 @@ if __name__ == "__main__":
     # Std Normal Distribution
     std_norm_dist = std_normal_dist()
     print(f'\nStd Normal Distribution:   mean={std_norm_dist.get_mean()},  standard deviation={std_norm_dist.get_stdev()}')
+
+    print(f'PDF   P(x=0) = {std_norm_dist.pdf(0)}')
+    print(f'PDF   P(x=1.96) = {std_norm_dist.pdf(1.96)}')
+    print(f'CDF   P(x<0) = {std_norm_dist.cdf(0)}')
+    print(f'CDF   P(x<1.96) = {std_norm_dist.cdf(1.96)}')
+    print(f'CDF   P(x>0) = {std_norm_dist.cdfr(0)}')
+    print(f'CDF   P(x>1.96) = {std_norm_dist.cdfr(1.96)}')
+    print(f'CDF   P(0<x<1.96) = {std_norm_dist.cdfb(0, 1.96)}')
+    print(f'CDF   P(-1.96<x<1.96) = {std_norm_dist.cdfb(-1.96, 1.96)}')
+    print(f'CDF   x where P(X<x) = 0.9750,   x = {std_norm_dist.inv(0.975)}')
+    print(f'CDF   x where P(X<x) = 0.0250,   x = {std_norm_dist.inv(0.025)}')
+    print(f'CDF   x where P(X>x) = 0.9750,   x = {std_norm_dist.invr(0.975)}')
+    print(f'CDF   x where P(X>x) = 0.0250,   x = {std_norm_dist.invr(0.025)}')
