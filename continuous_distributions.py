@@ -76,6 +76,11 @@ class normal_dist:
         x = self.inv(p)
         return x
     
+    def invm(self, p_m):
+        p = 0.50 + p_m/2 
+        x = self.inv(p)
+        return x
+    
 
 class std_normal_dist(normal_dist):
     def __init__(self):

@@ -63,6 +63,9 @@ if __name__ == "__main__":
     print(f'CDF   x where P(X<x) = 0.0250,   x = {norm_dist.inv(0.025)}')
     print(f'CDF   x where P(X>x) = 0.9750,   x = {norm_dist.invr(0.975)}')
     print(f'CDF   x where P(X>x) = 0.0250,   x = {norm_dist.invr(0.025)}')
+    print(f'CDF   x where P(-x<X<x) = 0.90,   x = {norm_dist.invm(0.90)}')
+    print(f'CDF   x where P(-x<X<x) = 0.95,   x = {norm_dist.invm(0.95)}')
+    print(f'CDF   x where P(-x<X<x) = 0.99,   x = {norm_dist.invm(0.99)}')
 
     
     # Std Normal Distribution
@@ -81,3 +84,6 @@ if __name__ == "__main__":
     print(f'CDF   x where P(X<x) = 0.0250,   x = {std_norm_dist.inv(0.025)}')
     print(f'CDF   x where P(X>x) = 0.9750,   x = {std_norm_dist.invr(0.975)}')
     print(f'CDF   x where P(X>x) = 0.0250,   x = {std_norm_dist.invr(0.025)}')
+    print(f'CDF   x where P(-x<X<x) = 0.90,   x = {std_norm_dist.invm(0.90)}')
+    print(f'CDF   x where P(-x<X<x) = 0.95,   x = {std_norm_dist.invm(0.95)}')
+    print(f'CDF   x where P(-x<X<x) = 0.99,   x = {std_norm_dist.invm(0.99)}')
