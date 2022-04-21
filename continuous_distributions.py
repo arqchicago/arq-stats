@@ -2,6 +2,8 @@ import math
 import scipy.stats
 from scipy import integrate
 from scipy.special import erfinv
+import numpy as np
+import matplotlib.pyplot as plt 
 
 # this class implements the Continuous Normal Distribution
 class normal_dist:
@@ -81,7 +83,21 @@ class normal_dist:
         x = self.inv(p)
         return x
     
+    def draw_z_score(self, range_, x1, title=''):
+        x_list = np.arange(-3,3,0.01)
+        
+        if range_ == '<':
+            cond = x_list<x1
 
+        #y = norm.pdf(x, self.mean, self.stdev)
+        y = [self.pdf(x) for x in x_list]
+        
+        z = x_list[cond]
+        plt.plot(x_list, y)
+        #plt.fill_between(z, 0, norm.pdf(z, self.mean, self.stdev))
+        plt.title(title)
+        plt.savefig("testplot.png")
+    
 class std_normal_dist(normal_dist):
     def __init__(self):
         super().__init__(mean=0, stdev=1)

@@ -101,3 +101,6 @@ if __name__ == "__main__":
     print(f'CDF   x where P(-x<X<x) = 0.90,   x = {std_norm_dist.invm(0.90)}')
     print(f'CDF   x where P(-x<X<x) = 0.95,   x = {std_norm_dist.invm(0.95)}')
     print(f'CDF   x where P(-x<X<x) = 0.99,   x = {std_norm_dist.invm(0.99)}')
+    
+    print(f'CDF   P(x<1.645) = {std_norm_dist.cdf(1.645)}')
+    std_norm_dist.draw_z_score('<', 1.645)
