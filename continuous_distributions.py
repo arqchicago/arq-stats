@@ -4,6 +4,7 @@ from scipy import integrate
 from scipy.special import erfinv
 import numpy as np
 import matplotlib.pyplot as plt 
+from scipy.stats import norm
 
 # this class implements the Continuous Normal Distribution
 class normal_dist:
@@ -84,19 +85,23 @@ class normal_dist:
         return x
     
     def draw_z_score(self, range_, x1, title=''):
+        
         x_list = np.arange(-3,3,0.01)
         
         if range_ == '<':
             cond = x_list<x1
+            filename = 'area_norm_z_less.png'
 
         #y = norm.pdf(x, self.mean, self.stdev)
         y = [self.pdf(x) for x in x_list]
         
-        z = x_list[cond]
+        z_list = x_list[cond]
+        z_pdf = [self.pdf(z) for z in z_list]
         plt.plot(x_list, y)
-        #plt.fill_between(z, 0, norm.pdf(z, self.mean, self.stdev))
+        #print(norm.pdf(z, self.mean, self.stdev))
+        plt.fill_between(z_list, 0, z_pdf) #norm.pdf(z, self.mean, self.stdev))
         plt.title(title)
-        plt.savefig("testplot.png")
+        plt.savefig(filename)
     
 class std_normal_dist(normal_dist):
     def __init__(self):
