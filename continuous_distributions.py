@@ -85,21 +85,28 @@ class normal_dist:
         return x
     
     def draw_z_score(self, range_, x1, title=''):
-        
+        fig, ax = plt.subplots()
         x_list = np.arange(-3,3,0.01)
         
         if range_ == '<':
             cond = x_list<x1
             filename = 'area_norm_z_less.png'
+        
+        elif range_ == '>':
+            cond = x_list>x1
+            filename = 'area_norm_z_greater.png'
 
-        #y = norm.pdf(x, self.mean, self.stdev)
         y = [self.pdf(x) for x in x_list]
         
         z_list = x_list[cond]
         z_pdf = [self.pdf(z) for z in z_list]
-        plt.plot(x_list, y)
-        #print(norm.pdf(z, self.mean, self.stdev))
-        plt.fill_between(z_list, 0, z_pdf) #norm.pdf(z, self.mean, self.stdev))
+        ax.plot(x_list, y)
+
+        if range_ == '<':
+            ax.fill_between(z_list, 0, z_pdf) #norm.pdf(z, self.mean, self.stdev))
+        elif range_ == '>':
+            ax.fill_between(z_list, 0, z_pdf)  #norm.pdf(z, self.mean, self.stdev))
+
         plt.title(title)
         plt.savefig(filename)
     

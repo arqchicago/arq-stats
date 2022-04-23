@@ -104,3 +104,6 @@ if __name__ == "__main__":
     
     print(f'CDF   P(x<1.645) = {std_norm_dist.cdf(1.645)}')
     std_norm_dist.draw_z_score('<', 1.645)
+    
+    print(f'CDF   P(x>1.645) = {std_norm_dist.cdfr(1.645)}')
+    std_norm_dist.draw_z_score('>', 1.645)
