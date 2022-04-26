@@ -30,11 +30,14 @@ class normal_dist:
         p_x = (1/(2*math.pi*(self.stdev**2))**0.50) * (math.exp(-0.50*((x-self.mean)/self.stdev)**2))
         return p_x
     
-    def cdf(self, x1):
+    def cdf(self, x1, draw=False):
         pdf = lambda x: (1/(2*math.pi*(self.stdev**2))**0.50) * (math.exp(-0.50*((x-self.mean)/self.stdev)**2))
         p_x_cdf = integrate.quad(pdf, -20, x1)
         p_x_cdf = round(p_x_cdf[0], 10)
         
+        if draw==True:
+            self.draw_z_score('<', x1)
+            
         return p_x_cdf
     
     def cdfr(self, x1):

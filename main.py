@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
     print(f'PDF   P(x=0) = {std_norm_dist.pdf(0)}')
     print(f'PDF   P(x=1.96) = {std_norm_dist.pdf(1.96)}')
-    print(f'CDF   P(x<0) = {std_norm_dist.cdf(0)}')
+    print(f'CDF   P(x<0) = {std_norm_dist.cdf(0, True)}')
     print(f'CDF   P(x>0) = {std_norm_dist.cdfr(0)}')
     print(f'CDF   P(x<1.645) = {std_norm_dist.cdf(1.645)}')
     print(f'CDF   P(x>1.645) = {std_norm_dist.cdfr(1.645)}')
@@ -102,8 +102,8 @@ if __name__ == "__main__":
     print(f'CDF   x where P(-x<X<x) = 0.95,   x = {std_norm_dist.invm(0.95)}')
     print(f'CDF   x where P(-x<X<x) = 0.99,   x = {std_norm_dist.invm(0.99)}')
     
-    print(f'CDF   P(x<1.645) = {std_norm_dist.cdf(1.645)}')
-    std_norm_dist.draw_z_score('<', 1.645)
+    #print(f'CDF   P(x<1.645) = {std_norm_dist.cdf(1.645)}')
+    #std_norm_dist.draw_z_score('<', 1.645)
     
     print(f'CDF   P(x>1.645) = {std_norm_dist.cdfr(1.645)}')
     std_norm_dist.draw_z_score('>', 1.645)
