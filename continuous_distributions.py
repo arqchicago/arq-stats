@@ -34,18 +34,21 @@ class normal_dist:
         pdf = lambda x: (1/(2*math.pi*(self.stdev**2))**0.50) * (math.exp(-0.50*((x-self.mean)/self.stdev)**2))
         p_x_cdf = integrate.quad(pdf, -20, x1)
         p_x_cdf = round(p_x_cdf[0], 10)
-        
+
         if draw==True:
-            self.draw_z_score('<', x1)
+            filename = str(x1).replace('.','')
+            print(">>",filename, x1)
+            self.draw_z_score('<', x1, filename)
             
         return p_x_cdf
     
-    def cdfr(self, x1, draw=False):
+    def cdfr(self, x1, draw=False,):
         p_x_cdf = self.cdf(x1)
         p_x_cdfr = 1 - p_x_cdf
         
         if draw==True:
-            self.draw_z_score('>', x1)
+            filename = str(x1).replace('.','')
+            self.draw_z_score('>', x1, filename)
         
         return p_x_cdfr
     
@@ -55,7 +58,8 @@ class normal_dist:
         p_x_cdf = round(p_x_cdf[0], 10)
         
         if draw==True:
-            self.draw_z_score('><', x1, x2)
+            filename = str(x1).replace('.','')+'_'+str(x2).replace('.','')
+            self.draw_z_score('><', x1, filename, x2)
         
         return p_x_cdf
     
@@ -93,21 +97,21 @@ class normal_dist:
         x = self.inv(p)
         return x
     
-    def draw_z_score(self, range_, x1, x2=None, title=''):
+    def draw_z_score(self, range_, x1, filename='', x2=None, title=''):
         fig, ax = plt.subplots()
         x_list = np.arange(-3,3,0.01)
         
         if range_ == '<':
             cond = x_list<x1
-            filename = 'area_norm_z_less.png'
+            filename = 'area_norm_z_less_'+filename+'.png'
         
         elif range_ == '>':
             cond = x_list>x1
-            filename = 'area_norm_z_greater.png'
+            filename = 'area_norm_z_greater_'+filename+'.png'
             
         elif range_ == '><':
             cond = ((x_list>x1) & (x_list<x2))
-            filename = 'area_norm_z_between.png'
+            filename = 'area_norm_z_between_'+filename+'.png'
 
         y = [self.pdf(x) for x in x_list]
         
