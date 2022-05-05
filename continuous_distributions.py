@@ -30,14 +30,15 @@ class normal_dist:
         p_x = (1/(2*math.pi*(self.stdev**2))**0.50) * (math.exp(-0.50*((x-self.mean)/self.stdev)**2))
         return p_x
     
-    def cdf(self, x1, draw=False):
+    def cdf(self, x1, draw=False, filename=''):
         pdf = lambda x: (1/(2*math.pi*(self.stdev**2))**0.50) * (math.exp(-0.50*((x-self.mean)/self.stdev)**2))
         p_x_cdf = integrate.quad(pdf, -20, x1)
         p_x_cdf = round(p_x_cdf[0], 10)
 
         if draw==True:
-            filename = str(x1).replace('.','')
-            print(">>",filename, x1)
+            if filename=='':
+                filename = str(x1).replace('.','')
+                
             self.draw_z_score('<', x1, filename)
             
         return p_x_cdf
@@ -103,7 +104,7 @@ class normal_dist:
         
         if range_ == '<':
             cond = x_list<x1
-            filename = 'area_norm_z_less_'+filename+'.png'
+            filename = 'area_norm_less_'+filename+'.png'
         
         elif range_ == '>':
             cond = x_list>x1
